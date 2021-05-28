@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui">
+  
+<h:head>
+  <title>PrimeFaces Hello World Example</title>
+</h:head>
+
+<h:body>
+  <h:form id="helloworld-form">
+
+    <p:panel header="PrimeFaces Hello World Example">
+      <h:panelGrid columns="2" cellpadding="4">
+        <h:outputText value="First Name: " />
+        <p:inputText id="first-name" value="#{helloWorld.firstName}" />
+
+        <h:outputText value="Last Name: " />
+        <p:inputText id="last-name" value="#{helloWorld.lastName}" />
+
+        <p:commandButton id="submit" value="Submit"
+          update="greeting-panel"
+          oncomplete="PF('greetingDialog').show()" />
+      </h:panelGrid>
+    </p:panel>
+
+    <p:dialog header="Greeting" widgetVar="greetingDialog"
+      modal="true" resizable="false">
+      <h:panelGrid id="greeting-panel" columns="1" cellpadding="4">
+        <h:outputText value="#{helloWorld.showGreeting()}" />
+      </h:panelGrid>
+    </p:dialog>
+
+  </h:form>
+  <p:dataTable var="technology" value="#{helloPFBean.technologies}">
+    <p:column headerText="Name">
+        <h:outputText value="Java" />
+    </p:column>
+
+    <p:column headerText="Version">
+        <h:outputText value="10.1" />
+    </p:column>
+</p:dataTable>
+</h:body>
+</html>
