@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+  <title>Page d'inscription</title>
+</h:head> 
+<body> 
+  <h:form id="registrationForm">
+    <p:panel header="Page d'inscription" style="width: 500px;">
+<p:messages/>
+    <h:panelGrid columns="2">
+     
+      <p:outputLabel value="Prénom :"/>
+      <p:inputText id="prenom" value="#{userController.registrationUser.firstName}" label="FirstName"/>
+      
+      <p:outputLabel value="Nom de famille :"/>
+      <p:inputText id="nomFam" value="#{userController.registrationUser.lastName}"/>
+            
+      <p:outputLabel value="Email:"/>
+      <p:inputText id="email" value="#{userController.registrationUser.email}"/>
+                            
+      <p:outputLabel value="Mot de passe :"/>
+      <p:password id="mdp" value="#{userController.registrationUser.password}" label="Password"/>
+
+      <p:outputLabel value=""/>
+      <p:commandButton action="#{userController.register}" value="Register" update="registrationForm"/>
+      
+    </h:panelGrid>
+    </p:panel>
+  </h:form>
+</body> 
+</html>
