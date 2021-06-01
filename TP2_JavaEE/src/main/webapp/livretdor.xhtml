@@ -1,43 +1,31 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://java.sun.com/jsf/html"
   xmlns:p="http://primefaces.org/ui">
   
 <h:head>
-  <title>Acceuil</title>
+  <title>Livret d'or</title>
 </h:head>
-
 <h:body>
 <div class="card">
-    <p:tabMenu activeIndex="#{param.i}">
+    <p:tabMenu activeIndex="#{param.l}">
     
         <p:menuitem value="Acceuil"  outcome="acceuil.xhtml"  icon="pi pi-fw pi-home">
          <param name="i" value="0"/>
         </p:menuitem>
         
         <p:menuitem value="Inscription"  outcome="inscription.xhtml"  icon="pi pi-fw pi-user">
-         <param name="a" value="0"/>
+         <param name="a" value="1"/>
         </p:menuitem>
         
          <p:menuitem value="Livret d'or"  outcome="livretdor.xhtml"  icon="pi pi-fw pi-book">
-         <param name="l" value="0"/>
+         <param name="l" value="2"/>
         </p:menuitem>
  
     </p:tabMenu>
 </div>
-
-  <h:form>
-    <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
-
-    <p:panel header="Association" >
-        <p class="p-m-0">
-            QTForever a été créer dans le but de libérer Gilles Blanc de prison, nous receuillons des témoingnages de pioupiou afin de récolter des fonds pour le libérer
-        </p>
-    </p:panel>
-      </h:form>
-    
- <h5>Laisser un commentaire</h5>
+<h5>Laisser un commentaire</h5>
  <p:inputTextarea rows="6" cols="33"/>
- 
 </h:body>
-</html>
+ </html>
