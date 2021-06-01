@@ -15,19 +15,20 @@
     <h:panelGrid columns="2">
      
       <p:outputLabel value="Prénom :"/>
-      <p:inputText id="prenom" value="#{userController.registrationUser.firstName}" label="FirstName"/>
+      <p:inputText id="prenom" value="#{inscrireBean.membre.prenom}" label="FirstName"  required="true"/>
       
       <p:outputLabel value="Nom de famille :"/>
-      <p:inputText id="nomFam" value="#{userController.registrationUser.lastName}"/>
+      <p:inputText id="nomFam" value="#{inscrireBean.membre.nom}"  required="true"/>
             
       <p:outputLabel value="Email:"/>
-      <p:inputText id="email" value="#{userController.registrationUser.email}"/>
+      <p:inputText id="email" value="#{inscrireBean.membre.email}"  required="true"/>
                             
       <p:outputLabel value="Mot de passe :"/>
-      <p:password id="mdp" value="#{userController.registrationUser.password}" label="Password"/>
+      <p:password id="mdp" value="#{inscrireBean.membre.hashMdp}" label="Password"  required="true"/>
 
       <p:outputLabel value=""/>
-      <p:commandButton action="#{userController.register}" value="Register" update="registrationForm"/>
+      <p:commandButton action="#{inscrireBean.inscrire}" value="S'inscrire" update="registrationForm"/>
+       
       
     </h:panelGrid>
     </p:panel>

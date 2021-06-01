@@ -17,6 +17,11 @@ public class Membre {
 	
 	private String hashMdp;
 
+	
+	public Membre() {
+		super();
+	}
+
 	public Membre(Long idMembre, String nom, String prenom, String email, String hashMdp) {
 		super();
 		this.idMembre = idMembre;
