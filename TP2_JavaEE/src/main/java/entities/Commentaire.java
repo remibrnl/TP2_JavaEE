@@ -1,10 +1,10 @@
-package bean;
+package entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class CommentaireBean {
+public class Commentaire {
 	@Id
 	private Long idCommentaire;
 	
@@ -15,7 +15,7 @@ public class CommentaireBean {
 	@ManyToOne
 	private Long idMembre;
 
-	public CommentaireBean(Long idCommentaire, String contenu, Long nbLikes, Long idMembre) {
+	public Commentaire(Long idCommentaire, String contenu, Long nbLikes, Long idMembre) {
 		super();
 		this.idCommentaire = idCommentaire;
 		this.contenu = contenu;

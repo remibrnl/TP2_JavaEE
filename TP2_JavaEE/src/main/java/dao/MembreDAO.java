@@ -1,23 +1,21 @@
 package dao;
 
-import java.sql.SQLException;
-
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import bean.MembreBean;
+
+import entities.Membre;
 import util.HibernateUtil;
 
-public class MembreDAO implements DAO<MembreBean> {
+public class MembreDAO implements DAO<Membre> {
 
 	@Override
-	public MembreBean find(Long id) {
+	public Membre find(Long id) {
 		Session sess = null;
-		MembreBean membre = null;
+		Membre membre = null;
 
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 
-			membre = sess.get(MembreBean.class, id);
+			membre = sess.get(Membre.class, id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,7 +29,7 @@ public class MembreDAO implements DAO<MembreBean> {
 	}
 
 	@Override
-	public void create(MembreBean obj) {
+	public void create(Membre obj) {
 		Session sess = null;
 
 		try {
@@ -48,7 +46,7 @@ public class MembreDAO implements DAO<MembreBean> {
 	}
 
 	@Override
-	public void update(MembreBean obj) {
+	public void update(Membre obj) {
 		Session sess = null;
 
 		try {
@@ -65,7 +63,7 @@ public class MembreDAO implements DAO<MembreBean> {
 	}
 
 	@Override
-	public void delete(MembreBean obj) {
+	public void delete(Membre obj) {
 		Session sess = null;
 		
 		try {

@@ -2,20 +2,20 @@ package dao;
 
 import org.hibernate.Session;
 
-import bean.CommentaireBean;
+import entities.Commentaire;
 import util.HibernateUtil;
 
-public class CommentaireDAO implements DAO<CommentaireBean> {
+public class CommentaireDAO implements DAO<Commentaire> {
 
 	@Override
-	public CommentaireBean find(Long id) {
+	public Commentaire find(Long id) {
 		Session sess = null;
-		CommentaireBean commentaire = null;
+		Commentaire commentaire = null;
 
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 
-			commentaire = sess.get(CommentaireBean.class, id);
+			commentaire = sess.get(Commentaire.class, id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -29,7 +29,7 @@ public class CommentaireDAO implements DAO<CommentaireBean> {
 	}
 
 	@Override
-	public void create(CommentaireBean obj) {
+	public void create(Commentaire obj) {
 		Session sess = null;
 
 		try {
@@ -47,7 +47,7 @@ public class CommentaireDAO implements DAO<CommentaireBean> {
 	}
 
 	@Override
-	public void update(CommentaireBean obj) {
+	public void update(Commentaire obj) {
 		Session sess = null;
 
 		try {
@@ -64,7 +64,7 @@ public class CommentaireDAO implements DAO<CommentaireBean> {
 	}
 
 	@Override
-	public void delete(CommentaireBean obj) {
+	public void delete(Commentaire obj) {
 		Session sess = null;
 		
 		try {

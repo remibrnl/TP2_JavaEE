@@ -1,10 +1,10 @@
-package bean;
+package entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class MembreBean {
+public class Membre {
 	
 	@Id
 	private Long idMembre;
@@ -17,7 +17,7 @@ public class MembreBean {
 	
 	private String hashMdp;
 
-	public MembreBean(Long idMembre, String nom, String prenom, String email, String hashMdp) {
+	public Membre(Long idMembre, String nom, String prenom, String email, String hashMdp) {
 		super();
 		this.idMembre = idMembre;
 		this.nom = nom;
