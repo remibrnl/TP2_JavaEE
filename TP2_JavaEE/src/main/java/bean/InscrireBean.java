@@ -1,7 +1,6 @@
 package bean;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -17,11 +16,11 @@ import entities.Membre;
 public class InscrireBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Membre       membre;
+    private Membre membre;
 
     // Injection de notre EJB (Session Bean Stateless)
     @EJB
-    private MembreDAO    membreDAO;
+    private MembreDAO membreDAO;
 
     // Initialisation de l'entité utilisateur
     public InscrireBean() {
@@ -37,9 +36,7 @@ public class InscrireBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage( null, message );
     }
 
-    public Membre getUtilisateur() {
-        return membre;
-    }
-
-
+	public Membre getMembre() {
+		return membre;
+	}
 }
