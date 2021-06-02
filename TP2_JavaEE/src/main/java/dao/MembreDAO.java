@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 
 import entities.Membre;
@@ -26,6 +29,27 @@ public class MembreDAO implements DAO<Membre> {
 		}
 
 		return membre;
+	}
+	
+	@Override
+	public List<Membre> findAll() {
+		Session sess = null;
+		List<Membre> membresList = new ArrayList<Membre>();
+		
+		try {
+			sess = HibernateUtil.getSessionFactory().openSession();
+			
+			membresList = sess.createQuery("SELECT * FROM membre", Membre.class).getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (sess != null && sess.isOpen()) {
+				sess.close();
+			}
+		}
+		
+		return membresList;
 	}
 
 	@Override
@@ -78,7 +102,5 @@ public class MembreDAO implements DAO<Membre> {
 			}
 		}
 	}
-
-	// private SessionFactory sess = HibernateUtil.getSessionFactory();
 
 }

@@ -1,8 +1,12 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 
 import entities.Commentaire;
+import entities.Membre;
 import util.HibernateUtil;
 
 public class CommentaireDAO implements DAO<Commentaire> {
@@ -26,6 +30,27 @@ public class CommentaireDAO implements DAO<Commentaire> {
 		}
 
 		return commentaire;
+	}
+
+	@Override
+	public List<Commentaire> findAll() {
+		Session sess = null;
+		List<Commentaire> commentairesList = new ArrayList<Commentaire>();
+		
+		try {
+			sess = HibernateUtil.getSessionFactory().openSession();
+			
+			commentairesList = sess.createQuery("SELECT * FROM commentaire", Commentaire.class).getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (sess != null && sess.isOpen()) {
+				sess.close();
+			}
+		}
+		
+		return commentairesList;
 	}
 
 	@Override

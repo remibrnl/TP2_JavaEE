@@ -1,6 +1,6 @@
 package dao;
 
-import java.sql.SQLException;
+import java.util.List;
 
 public interface DAO<T> {
 	
@@ -10,6 +10,12 @@ public interface DAO<T> {
 	 * @return object corresponding to the database, null if not found or error
 	 */
 	T find(Long id);
+	
+	/**
+	 * Get all the objects corresponding to all the database
+	 * @return List of all the objects in the database, null if error
+	 */
+	List<T> findAll();
 	
 	/**
 	 * Create the element in the database corresponding to the object
