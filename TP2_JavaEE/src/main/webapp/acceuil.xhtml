@@ -36,13 +36,14 @@
     </p:panel>
       </h:form>
       
+<br/>
+<br/>
+
       
+<p:panel header="Membre de l'association" >      
  <h:form>
     <div class="tab">
         <p:dataTable var="membre" value="#{MembreDAO.membres}">
-            <p:column headerText="Id">
-                <h:outputText value="#{membre.idMembre}" />
-            </p:column>
 
             <p:column headerText="Nom">
                 <h:outputText value="#{membre.nom}" />
@@ -51,18 +52,15 @@
             <p:column headerText="Prenom">
                 <h:outputText value="#{membre.prenom}" />
             </p:column>
-
-            <p:column headerText="Mail">
-                <h:outputText value="#{membre.email}" />
-            </p:column>
             
-            <p:column headerText="MDP">
-                <h:outputText value="#{membre.hashMdp}" />
-            </p:column>
+            
         </p:dataTable>
     </div>
 </h:form>
-    
+</p:panel>
+ 
+ <br/>
+ 
  <h5>Laisser un commentaire</h5>
  <p:inputTextarea rows="6" cols="33"/>
  
