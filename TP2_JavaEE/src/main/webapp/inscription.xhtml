@@ -10,28 +10,28 @@
 </h:head> 
 <body> 
   <h:form id="registrationForm">
-    <p:panel header="Page d'inscription" style="width: 500px;">
-<p:messages/>
+    <h:panel header="Page d'inscription" style="width: 500px;">
+<h:messages/>
     <h:panelGrid columns="2">
      
-      <p:outputLabel value="Prénom :"/>
-      <p:inputText id="prenom" value="#{inscrireBean.membre.prenom}" label="FirstName"  required="true"/>
+      <h:outputLabel value="Prénom :"/>
+      <h:inputText id="prenom" value="#{inscrireBean.membre.prenom}" label="FirstName"  required="true"/>
       
-      <p:outputLabel value="Nom de famille :"/>
-      <p:inputText id="nomFam" value="#{inscrireBean.membre.nom}"  required="true"/>
+      <h:outputLabel value="Nom de famille :"/>
+      <h:inputText id="nomFam" value="#{inscrireBean.membre.nom}"  required="true"/>
             
-      <p:outputLabel value="Email:"/>
-      <p:inputText id="email" value="#{inscrireBean.membre.email}"  required="true"/>
+      <h:outputLabel value="Email:"/>
+      <h:inputText id="email" value="#{inscrireBean.membre.email}"  required="true"/>
                             
-      <p:outputLabel value="Mot de passe :"/>
-      <p:password id="mdp" value="#{inscrireBean.membre.hashMdp}" label="Password"  required="true"/>
+      <h:outputLabel value="Mot de passe :"/>
+      <h:password id="mdp" value="#{inscrireBean.membre.hashMdp}" label="Password"  required="true"/>
 
-      <p:outputLabel value=""/>
-      <p:commandButton action="#{inscrireBean.inscrire}" value="S'inscrire" update="registrationForm"/>
+      <h:outputLabel value=""/>
+      <h:commandButton action="#{inscrireBean.inscrire()}" value="S'inscrire" update="registrationForm"/>
        
       
     </h:panelGrid>
-    </p:panel>
+    </h:panel>
   </h:form>
 </body> 
 </html>

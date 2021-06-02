@@ -6,13 +6,15 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import dao.MembreDAO;
 import entities.Membre;
 
-@ManagedBean
-@RequestScoped
+
+@SessionScoped
+@ManagedBean(name = "inscrireBean")
 public class InscrireBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
