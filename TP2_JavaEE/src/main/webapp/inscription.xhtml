@@ -9,8 +9,8 @@
   <title>Page d'inscription</title>
 </h:head> 
 <body> 
-  <h:form id="registrationForm">
-    <h:panel header="Page d'inscription" style="width: 500px;">
+  <!-- <h:form id="registrationForm">
+    <p:panel header="Page d'inscription" style="width: 500px;">
 <h:messages/>
     <h:panelGrid columns="2">
      
@@ -24,14 +24,46 @@
       <h:inputText id="email" value="#{inscrireBean.membre.email}"  required="true"/>
                             
       <h:outputLabel value="Mot de passe :"/>
-      <h:password id="mdp" value="#{inscrireBean.membre.hashMdp}" label="Password"  required="true"/>
+      <p:password id="mdp" value="#{inscrireBean.membre.hashMdp}" label="Password"  required="true"/>
 
       <h:outputLabel value=""/>
       <h:commandButton action="#{inscrireBean.inscrire()}" value="S'inscrire" update="registrationForm"/>
        
       
     </h:panelGrid>
-    </h:panel>
-  </h:form>
+    </p:panel>
+  </h:form> -->
+  
+  <h3>Add New Product</h3>
+	<h:form prependId="false">
+		<table cellpadding="2" cellspacing="2">
+			<tr>
+				<td>nom</td>
+				<td>
+					<h:inputText value="#{inscrireBean.membre.nom}"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<td>prenom</td>
+				<td>
+					<h:inputText value="#{inscrireBean.membre.prenom}"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<td>email</td>
+				<td>
+					<h:inputText value="#{inscrireBean.membre.email}"></h:inputText>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>submit</td>
+				<td>
+					<h:commandButton value="Save" action="#{inscrireBean.inscrire()}"></h:commandButton>
+				</td>
+			</tr>
+		</table>
+	</h:form>
+	
 </body> 
 </html>

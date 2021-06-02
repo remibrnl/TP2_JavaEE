@@ -27,6 +27,7 @@ public class InscrireBean implements Serializable {
     // Initialisation de l'entité utilisateur
     public InscrireBean() {
     	membre = new Membre();
+    	membreDAO = new MembreDAO();
     }
 
     // Méthode d'action appelée lors du clic sur le bouton du formulaire
