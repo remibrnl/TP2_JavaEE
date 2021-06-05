@@ -37,6 +37,18 @@
       </h:form>
       
 <br/>
+ <h:form>
+    <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+    <p:panel header="Mot du président" >
+        <p class="p-m-0">
+           <p:graphicImage name="chaiman.jpg" library="demo"/>
+           
+          OUI
+           
+        </p>
+    </p:panel>
+      </h:form>
 <br/>
 
       
@@ -46,7 +58,8 @@
         <p:dataTable var="membre" value="#{MembreDAO.membres}">
 
             <p:column headerText="Nom">
-                <h:outputText value="#{membre.nom}" />
+                <h:outputText  value="#{membre.nom}"  />
+                franck
             </p:column>
 
             <p:column headerText="Prenom">
@@ -61,8 +74,10 @@
  
  <br/>
  
- <h5>Laisser un commentaire</h5>
+    <p:panel header="Laisser un commentaire" >
  <p:inputTextarea rows="6" cols="33"/>
- 
+  <br/>
+ <p:commandButton type="button" value="Envoyer" icon="pi pi-check" />
+ </p:panel>
 </h:body>
 </html>
