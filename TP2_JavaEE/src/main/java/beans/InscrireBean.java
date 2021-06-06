@@ -20,21 +20,17 @@ public class InscrireBean implements Serializable {
 
     private Membre membre;
 
-    // Injection de notre EJB (Session Bean Stateless)
-    @EJB
-    private MembreDAO membreDAO;
 
     // Initialisation de l'entité utilisateur
     public InscrireBean() {
     	membre = new Membre();
-    	membreDAO = new MembreDAO();
     }
 
     // Méthode d'action appelée lors du clic sur le bouton du formulaire
     // d'inscription
     public void inscrire() {
+    	MembreDAO membreDAO = new MembreDAO();
         membreDAO.create( membre );
-        System.out.println("PTDR T KI");
         FacesMessage message = new FacesMessage( "Succès de l'inscription !" );
         FacesContext.getCurrentInstance().addMessage( null, message );
     }
@@ -42,4 +38,10 @@ public class InscrireBean implements Serializable {
 	public Membre getMembre() {
 		return membre;
 	}
+
+	public void setMembre(Membre membre) {
+		this.membre = membre;
+	}
+	
+	
 }

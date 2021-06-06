@@ -59,7 +59,7 @@ public class MembreDAO implements DAO<Membre> {
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 
-			sess.persist(obj);
+			sess.save(obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

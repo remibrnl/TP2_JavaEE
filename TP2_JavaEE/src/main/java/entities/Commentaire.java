@@ -1,33 +1,39 @@
 package entities;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Commentaire {
+@Table(name = "commentaire")
+public class Commentaire implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	private Long idCommentaire;
+	private int idCommentaire;
 	
 	private String contenu;
 	
-	private Long nbLikes;
+	private int nbLikes;
 	
-	@ManyToOne
-	private Long idMembre;
 
-	public Commentaire(Long idCommentaire, String contenu, Long nbLikes, Long idMembre) {
+	public Commentaire(int idCommentaire, String contenu, int nbLikes) {
 		super();
 		this.idCommentaire = idCommentaire;
 		this.contenu = contenu;
 		this.nbLikes = nbLikes;
-		this.idMembre = idMembre;
 	}
 
-	public Long getIdCommentaire() {
+	public int getIdCommentaire() {
 		return idCommentaire;
 	}
 
-	public void setIdCommentaire(Long idCommentaire) {
+	public void setIdCommentaire(int idCommentaire) {
 		this.idCommentaire = idCommentaire;
 	}
 
@@ -39,21 +45,15 @@ public class Commentaire {
 		this.contenu = contenu;
 	}
 
-	public Long getNbLikes() {
+	public int getNbLikes() {
 		return nbLikes;
 	}
 
-	public void setNbLikes(Long nbLikes) {
+	public void setNbLikes(int nbLikes) {
 		this.nbLikes = nbLikes;
 	}
 
-	public Long getIdMembre() {
-		return idMembre;
-	}
-
-	public void setIdMembre(Long idMembre) {
-		this.idMembre = idMembre;
-	}
+	
 	
 	
 }

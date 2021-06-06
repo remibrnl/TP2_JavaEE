@@ -1,5 +1,7 @@
 package entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,11 +12,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "membre")
-public class Membre {
+public class Membre implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idMembre;
+	private int idMembre;
 	
 	@Column
 	private String nom;
@@ -30,11 +37,9 @@ public class Membre {
 
 	
 	public Membre() {
-		super();
 	}
 
-	public Membre(Long idMembre, String nom, String prenom, String email, String hashMdp) {
-		super();
+	public Membre(int idMembre, String nom, String prenom, String email, String hashMdp) {
 		this.idMembre = idMembre;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -42,11 +47,11 @@ public class Membre {
 		this.hashMdp = hashMdp;
 	}
 
-	public Long getIdMembre() {
+	public int getIdMembre() {
 		return idMembre;
 	}
 
-	public void setIdMembre(Long idMembre) {
+	public void setIdMembre(int idMembre) {
 		this.idMembre = idMembre;
 	}
 
