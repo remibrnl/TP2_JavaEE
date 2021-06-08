@@ -2,6 +2,9 @@ package dao;
 
 import java.util.List;
 
+/*
+ * Cette classe est une classe template permettant la création des autres classes DAO
+ */
 public interface DAO<T> {
 	
 	/**
