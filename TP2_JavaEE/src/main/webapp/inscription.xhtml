@@ -37,19 +37,19 @@
 	    <h:panelGrid columns="2">
 	     
 	      <h:outputLabel value="Prénom :"/>
-	      <p:inputText id="prenom" value="#{inscrireBean.membre.prenom}"  required="true"/>
+	      <p:inputText id="prenom" value="#{membreBean.membre.prenom}"  required="true"/>
 	      
 	      <h:outputLabel value="Nom de famille :"/>
-	      <p:inputText id="nom" value="#{inscrireBean.membre.nom}"  required="true"/>
+	      <p:inputText id="nom" value="#{membreBean.membre.nom}"  required="true"/>
 	            
 	      <h:outputLabel value="Email:"/>
-	      <p:inputText id="email" value="#{inscrireBean.membre.email}"  required="true"/>
+	      <p:inputText id="email" value="#{membreBean.membre.email}"  required="true"/>
 	                            
 	      <h:outputLabel value="Mot de passe :"/>
-	      <p:password id="hashMdp" value="#{inscrireBean.membre.hashMdp}"  required="true"/>
+	      <p:password id="hashMdp" value="#{membreBean.membre.hashMdp}"  required="true"/>
 	
 	      <h:outputLabel value=""/>
-	      <p:commandButton action="#{inscrireBean.inscrire()}" value="S'inscrire" update="registrationForm"/>
+	      <p:commandButton action="#{membreBean.inscrire()}" value="S'inscrire" update="registrationForm"/>
 	       
 	    </h:panelGrid>
     </p:panel>

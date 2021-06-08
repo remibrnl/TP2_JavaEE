@@ -10,17 +10,22 @@ import javax.faces.context.FacesContext;
 import dao.MembreDAO;
 import entities.Membre;
 
-
+/*
+ * Cette classe est la bean de la table "Membre" de la base de données
+ */
 @SessionScoped
-@ManagedBean(name = "inscrireBean")
-public class InscrireBean implements Serializable {
+@ManagedBean(name = "membreBean")
+public class MembreBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Membre membre;
 
 
-    // Initialisation de l'entité utilisateur
-    public InscrireBean() {
+    // Initialisation de l'entité membre
+    /*
+     * Constructeur par défaut de la classe
+     */
+    public MembreBean() {
     	membre = new Membre();
     }
 
@@ -33,10 +38,16 @@ public class InscrireBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage( null, message );
     }
 
+    /*
+     * Getter de l'entité Membre
+     */
 	public Membre getMembre() {
 		return membre;
 	}
 
+	/*
+     * Setter de l'entité Membre
+     */
 	public void setMembre(Membre membre) {
 		this.membre = membre;
 	}

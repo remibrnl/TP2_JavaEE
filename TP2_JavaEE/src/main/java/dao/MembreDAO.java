@@ -8,6 +8,9 @@ import org.hibernate.Session;
 import entities.Membre;
 import util.HibernateUtil;
 
+/*
+ * Cette classe est le DAO de la table Membre
+ */
 public class MembreDAO implements DAO<Membre> {
 
 	@Override
