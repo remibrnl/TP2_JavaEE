@@ -21,12 +21,17 @@ public class Commentaire implements Serializable{
 	
 	private int nbLikes;
 	
+	private String nomMembre;
+	
 
-	public Commentaire(int idCommentaire, String contenu, int nbLikes) {
-		super();
+	public Commentaire() {
+	}
+
+	public Commentaire(int idCommentaire, String contenu, int nbLikes,String nomMembre) {
 		this.idCommentaire = idCommentaire;
 		this.contenu = contenu;
 		this.nbLikes = nbLikes;
+		this.nomMembre = nomMembre;
 	}
 
 	public int getIdCommentaire() {
@@ -51,6 +56,14 @@ public class Commentaire implements Serializable{
 
 	public void setNbLikes(int nbLikes) {
 		this.nbLikes = nbLikes;
+	}
+
+	public String getNomMembre() {
+		return nomMembre;
+	}
+
+	public void setNomMembre(String nomMembre) {
+		this.nomMembre = nomMembre;
 	}
 
 	

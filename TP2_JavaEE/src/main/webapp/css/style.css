@@ -1,9 +1,9 @@
 @charset "ISO-8859-1";
 
 .parent {
-	   margin: 20px auto;
-	   width : 465px;
-	   border-top: 1px solid #c6c6c6;
-	   border-bottom: 1px solid #c6c6c6;
-	   padding: 15px 30px;
+	   margin: 10px auto;
+	   width : 565px;
+	   border-top: 10px ;
+	   border-bottom: 10px;
+	   padding: 25px 40px;
 }
