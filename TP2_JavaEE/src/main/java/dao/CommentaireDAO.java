@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import entities.Commentaire;
-import entities.Membre;
 import util.HibernateUtil;
 
 /*
@@ -44,6 +43,26 @@ public class CommentaireDAO implements DAO<Commentaire> {
 			sess = HibernateUtil.getSessionFactory().openSession();
 			
 			commentairesList = sess.createQuery("SELECT * FROM commentaire", Commentaire.class).getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (sess != null && sess.isOpen()) {
+				sess.close();
+			}
+		}
+		
+		return commentairesList;
+	}
+	
+	public List<Commentaire> findAlOrderByLikes() {
+		Session sess = null;
+		List<Commentaire> commentairesList = new ArrayList<Commentaire>();
+		
+		try {
+			sess = HibernateUtil.getSessionFactory().openSession();
+			
+			commentairesList = sess.createQuery("FROM Commentaire ORDER BY nbLikes DESC", Commentaire.class).getResultList();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,13 +1,17 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import dao.CommentaireDAO;
 import dao.MembreDAO;
+import entities.Commentaire;
 import entities.Membre;
 
 /*
@@ -36,6 +40,19 @@ public class MembreBean implements Serializable {
         membreDAO.create( membre );
         FacesMessage message = new FacesMessage( "Succès de l'inscription !" );
         FacesContext.getCurrentInstance().addMessage( null, message );
+    }
+    
+    /*
+     * Cette méthode retourne la liste des membres
+     */
+    public List<Membre> getAllMembres() {
+    	
+    	List<Membre> listMembres = new ArrayList<Membre>();
+    	MembreDAO membreDAO = new MembreDAO();
+    	
+    	listMembres = membreDAO.findAll();
+        
+        return listMembres;
     }
 
     /*

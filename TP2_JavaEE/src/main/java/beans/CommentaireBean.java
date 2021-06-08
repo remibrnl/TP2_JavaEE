@@ -1,6 +1,8 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -35,9 +37,24 @@ public class CommentaireBean implements Serializable {
      */
     public void creerCommentaire() {
     	CommentaireDAO commentaireDAO = new CommentaireDAO();
+    	commentaire.setNbLikes(0);
     	commentaireDAO.create( commentaire );
+    	
         FacesMessage message = new FacesMessage( "Le commentaire a bien été envoyé" );
         FacesContext.getCurrentInstance().addMessage( null, message );
+    }
+    
+    /*
+     * Cette méthode renvoie une liste de commentaires triés selon le nombre de likes
+     */
+    public List<Commentaire> getCommentairesDesc() {
+    	
+    	List<Commentaire> listComs = new ArrayList<Commentaire>();
+    	CommentaireDAO commentaireDAO = new CommentaireDAO();
+    	
+    	listComs = commentaireDAO.findAlOrderByLikes();
+        
+        return listComs;
     }
 
     /*

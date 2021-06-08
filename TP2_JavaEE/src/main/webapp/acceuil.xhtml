@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:p="http://primefaces.org/ui">
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:c="http://java.sun.com/jsp/jstl/core">
   
 <h:head>
   <title>Acceuil</title>
@@ -15,15 +17,15 @@
 			    <p:tabMenu activeIndex="#{param.i}">
 			    
 			        <p:menuitem value="Acceuil"  outcome="acceuil.xhtml"  icon="pi pi-fw pi-home">
-			         <param name="i" value="0"/>
+			         <f:param name="i" value="0"/>
 			        </p:menuitem>
 			        
 			        <p:menuitem value="Inscription"  outcome="inscription.xhtml"  icon="pi pi-fw pi-user">
-			         <param name="i" value="1"/>
+			         <f:param name="i" value="1"/>
 			        </p:menuitem>
 			        
 			         <p:menuitem value="Livret d'or"  outcome="livretdor.xhtml"  icon="pi pi-fw pi-book">
-			         <param name="i" value="2"/>
+			         <f:param name="i" value="2"/>
 			        </p:menuitem>
 			 
 			    </p:tabMenu>
@@ -52,9 +54,8 @@
 		
 		      
 		<p:panel header="Membre de l'association" >      
-		 <h:form>
-		    <div class="tab">
-		        <p:dataTable var="membre" value="#{MembreDAO.membres}">
+		    <div class="card">
+		        <p:dataTable var="membre" value="#{membreBean.getAllMembres()}">
 		
 		            <p:column headerText="Nom">
 		                <h:outputText  value="#{membre.nom}"  />
@@ -68,7 +69,6 @@
 		            
 		        </p:dataTable>
 		    </div>
-		</h:form>
 		</p:panel>
 		 <br/>
 		 <p:panel header="Activité" > 
@@ -81,12 +81,6 @@
 		
 		 </p:panel>
 		 
-		 
-		    <p:panel header="Laisser un commentaire" >
-		 <p:inputTextarea rows="6" cols="33"/>
-		  <br/>
-		 <p:commandButton type="button" value="Envoyer" icon="pi pi-check" />
-		 </p:panel>
 	 </h:form>
 </h:body>
 </html>

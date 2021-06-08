@@ -42,7 +42,7 @@ public class MembreDAO implements DAO<Membre> {
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 			
-			membresList = sess.createQuery("SELECT * FROM membre", Membre.class).getResultList();
+			membresList = sess.createQuery("FROM Membre", Membre.class).getResultList();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
