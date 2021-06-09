@@ -5,16 +5,18 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import com.sun.istack.Nullable;
+
 import entities.Commentaire;
 import util.HibernateUtil;
 
-/*
+/**
  * Cette classe est le DAO de la table Commentaire
  */
 public class CommentaireDAO implements DAO<Commentaire> {
 
 	@Override
-	public Commentaire find(Long id) {
+	@Nullable public Commentaire find(int id) throws Exception {
 		Session sess = null;
 		Commentaire commentaire = null;
 
@@ -24,7 +26,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 			commentaire = sess.get(Commentaire.class, id);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -35,17 +37,17 @@ public class CommentaireDAO implements DAO<Commentaire> {
 	}
 
 	@Override
-	public List<Commentaire> findAll() {
+	@Nullable public List<Commentaire> findAll() throws Exception {
 		Session sess = null;
 		List<Commentaire> commentairesList = new ArrayList<Commentaire>();
 		
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 			
-			commentairesList = sess.createQuery("SELECT * FROM commentaire", Commentaire.class).getResultList();
+			commentairesList = sess.createQuery("FROM Commentaire ORDER BY Commentaire.idCommentaire", Commentaire.class).getResultList();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -55,7 +57,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 		return commentairesList;
 	}
 	
-	public List<Commentaire> findAlOrderByLikes() {
+	public List<Commentaire> findAllOrderByLikes() throws Exception {
 		Session sess = null;
 		List<Commentaire> commentairesList = new ArrayList<Commentaire>();
 		
@@ -65,7 +67,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 			commentairesList = sess.createQuery("FROM Commentaire ORDER BY nbLikes DESC", Commentaire.class).getResultList();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -76,16 +78,15 @@ public class CommentaireDAO implements DAO<Commentaire> {
 	}
 
 	@Override
-	public void create(Commentaire obj) {
+	public void create(Commentaire obj) throws Exception {
 		Session sess = null;
 
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 
 			sess.persist(obj);
-
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -94,7 +95,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 	}
 
 	@Override
-	public void update(Commentaire obj) {
+	public void update(Commentaire obj) throws Exception {
 		Session sess = null;
 
 		try {
@@ -102,7 +103,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 
 			sess.update(obj);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -111,7 +112,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 	}
 
 	@Override
-	public void delete(Commentaire obj) {
+	public void delete(Commentaire obj) throws Exception {
 		Session sess = null;
 		
 		try {
@@ -119,7 +120,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 			
 			sess.remove(obj);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();

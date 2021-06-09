@@ -37,9 +37,18 @@ public class MembreBean implements Serializable {
     // d'inscription
     public void inscrire() {
     	MembreDAO membreDAO = new MembreDAO();
-        membreDAO.create( membre );
-        FacesMessage message = new FacesMessage( "Succès de l'inscription !" );
+        
+    	try {
+			membreDAO.create( membre );
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e.getMessage(), null));
+			e.printStackTrace();
+		}
+    	
+
+    	FacesMessage message = new FacesMessage( "Succès de l'inscription !" );
         FacesContext.getCurrentInstance().addMessage( null, message );
+        
     }
     
     /*
@@ -50,7 +59,12 @@ public class MembreBean implements Serializable {
     	List<Membre> listMembres = new ArrayList<Membre>();
     	MembreDAO membreDAO = new MembreDAO();
     	
-    	listMembres = membreDAO.findAll();
+    	try {
+			listMembres = membreDAO.findAll();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e.getMessage(), null));
+			e.printStackTrace();
+		}
         
         return listMembres;
     }

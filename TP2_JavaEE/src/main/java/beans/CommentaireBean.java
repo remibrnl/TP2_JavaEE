@@ -41,7 +41,12 @@ public class CommentaireBean implements Serializable {
     public void creerCommentaire() {
     	CommentaireDAO commentaireDAO = new CommentaireDAO();
     	commentaire.setNbLikes(0);
-    	commentaireDAO.create( commentaire );
+    	try {
+			commentaireDAO.create( commentaire );
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e.getMessage(), null));
+			e.printStackTrace();
+		}
     	
         FacesMessage message = new FacesMessage( "Le commentaire a bien été envoyé" );
         FacesContext.getCurrentInstance().addMessage( null, message );
@@ -73,7 +78,12 @@ public class CommentaireBean implements Serializable {
     	List<Commentaire> listComs = new ArrayList<Commentaire>();
     	CommentaireDAO commentaireDAO = new CommentaireDAO();
     	
-    	listComs = commentaireDAO.findAllOrderByLikes();
+    	try {
+			listComs = commentaireDAO.findAllOrderByLikes();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e.getMessage(), null));
+			e.printStackTrace();
+		}
         
         return listComs;
     }

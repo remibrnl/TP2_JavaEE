@@ -5,16 +5,18 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import com.sun.istack.Nullable;
+
 import entities.Membre;
 import util.HibernateUtil;
 
-/*
+/**
  * Cette classe est le DAO de la table Membre
  */
 public class MembreDAO implements DAO<Membre> {
 
 	@Override
-	public Membre find(Long id) {
+	@Nullable public Membre find(int id) throws Exception {
 		Session sess = null;
 		Membre membre = null;
 
@@ -24,7 +26,7 @@ public class MembreDAO implements DAO<Membre> {
 			membre = sess.get(Membre.class, id);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -35,17 +37,17 @@ public class MembreDAO implements DAO<Membre> {
 	}
 	
 	@Override
-	public List<Membre> findAll() {
+	public List<Membre> findAll() throws Exception {
 		Session sess = null;
 		List<Membre> membresList = new ArrayList<Membre>();
 		
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 			
-			membresList = sess.createQuery("FROM Membre", Membre.class).getResultList();
+			membresList = sess.createQuery("FROM Membre ORDER BY Membre.nom", Membre.class).getResultList();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -56,7 +58,7 @@ public class MembreDAO implements DAO<Membre> {
 	}
 
 	@Override
-	public void create(Membre obj) {
+	public void create(Membre obj) throws Exception {
 		Session sess = null;
 
 		try {
@@ -64,7 +66,7 @@ public class MembreDAO implements DAO<Membre> {
 
 			sess.save(obj);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -73,7 +75,7 @@ public class MembreDAO implements DAO<Membre> {
 	}
 
 	@Override
-	public void update(Membre obj) {
+	public void update(Membre obj) throws Exception {
 		Session sess = null;
 
 		try {
@@ -81,7 +83,7 @@ public class MembreDAO implements DAO<Membre> {
 
 			sess.update(obj);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
@@ -90,7 +92,7 @@ public class MembreDAO implements DAO<Membre> {
 	}
 
 	@Override
-	public void delete(Membre obj) {
+	public void delete(Membre obj) throws Exception {
 		Session sess = null;
 		
 		try {
@@ -98,7 +100,7 @@ public class MembreDAO implements DAO<Membre> {
 			
 			sess.remove(obj);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sess != null && sess.isOpen()) {
 				sess.close();
