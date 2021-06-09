@@ -64,22 +64,22 @@ public class CommentaireBean implements Serializable {
     public void upvote(Commentaire com) {
     	CommentaireDAO commentaireDAO = new CommentaireDAO();
     	com.setNbLikes(com.getNbLikes()+1);   
-    	PrimeFaces.current().executeScript("window.alert('"+com.getNbLikes()+"');");
+    	
     	try {
-			commentaireDAO.update(com);
+			commentaireDAO.update( com );
 			
 		} catch (Exception e1) {
 			PrimeFaces.current().executeScript("window.alert('"+e1.getMessage()+"');");
 			e1.printStackTrace();
 		}
     	
-//    	ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//        try {
-//			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+    	ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     }
     
