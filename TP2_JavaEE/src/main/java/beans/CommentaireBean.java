@@ -1,5 +1,6 @@
 package beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import dao.CommentaireDAO;
 import entities.Commentaire;
@@ -45,6 +48,24 @@ public class CommentaireBean implements Serializable {
     }
     
     /*
+     * Cette méthode ajoute un like a un commentaire
+     */
+    public void upvote() {
+    	CommentaireDAO commentaireDAO = new CommentaireDAO();
+    	commentaire.setNbLikes(commentaire.getNbLikes()+1);
+    	commentaireDAO.update( commentaire );
+    	
+    	ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
+    /*
      * Cette méthode renvoie une liste de commentaires triés selon le nombre de likes
      */
     public List<Commentaire> getCommentairesDesc() {
@@ -52,7 +73,7 @@ public class CommentaireBean implements Serializable {
     	List<Commentaire> listComs = new ArrayList<Commentaire>();
     	CommentaireDAO commentaireDAO = new CommentaireDAO();
     	
-    	listComs = commentaireDAO.findAlOrderByLikes();
+    	listComs = commentaireDAO.findAllOrderByLikes();
         
         return listComs;
     }

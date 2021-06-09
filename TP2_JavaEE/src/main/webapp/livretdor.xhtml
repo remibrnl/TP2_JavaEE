@@ -66,6 +66,19 @@
 		            </p:column>
 		            
 		            
+		            <p:column headerText="Likes">
+		            	<h:outputText value="#{com.nbLikes}" />  
+		            	<i class="pi pi-thumbs-up" style="font-size: 2rem"></i>           
+		            </p:column>
+		            
+		            <p:column headerText="Aimer le commentaire">
+		            	<p:commandButton  action="#{commentaireBean.upvote()}" value="J'aime"  >
+		                </p:commandButton>
+		                
+		            </p:column>
+		            
+		            
+		            
 		        </p:dataTable>
 		    </div>
 		</p:panel>
