@@ -1,5 +1,6 @@
 package beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import dao.CommentaireDAO;
 import dao.MembreDAO;
@@ -46,9 +49,16 @@ public class MembreBean implements Serializable {
 		}
     	
 
-    	FacesMessage message = new FacesMessage( "Succès de l'inscription !" );
-        FacesContext.getCurrentInstance().addMessage( null, message );
+    	// FacesMessage message = new FacesMessage( "Succès de l'inscription !" );
+        // FacesContext.getCurrentInstance().addMessage( null, message );
         
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+			ec.redirect("accueil.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     /*
