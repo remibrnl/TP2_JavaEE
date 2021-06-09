@@ -64,6 +64,7 @@
 		
 		            <p:column headerText="Prenom">
 		                <h:outputText value="#{membre.prenom}" />
+		                
 		            </p:column>
 		            
 		            
@@ -72,12 +73,19 @@
 		</p:panel>
 		 <br/>
 		 <p:panel header="Activité" > 
-		  L'association propose diverses activités dans le but de montrer la force de QT. Nous proposons chaque weed-end des ateliers pour apprendre à coder en QT.
-		 De plus nous organisons aussi des conférences pour discuter entre membre de l'association et débattre.   
-		 <table class="tab">
-		 <tr><th>Activité</th><th> Desciption </th> </tr>
-		 <tr><th>Initiation</th><th> Apprendre à ceux qui le désire les bases du QT  </th>  </tr>
-		 </table>  
+		 <p:fieldset legend="Initiation">
+            <p class="p-m-0">
+            Nous proposons une initiation au QT. Que vous soyez jeune, adulte, agé, débutant ou expérimenté dans le domaine de l'informatique nous vous acceuillons.
+            L'initiation se déroule les week-end à nos locaux.
+            </p>
+        </p:fieldset>
+        
+        <p:fieldset legend="Conférence">
+            <p class="p-m-0">
+            Nous vous proposons des conférences pour échanger et débattre sur divers sujets. Ces meetings ont lieu dans nos locaux et se termine généralement par un petit brunch.
+            Vous êtes tous les bienvenu pour échanger.
+            </p>
+        </p:fieldset>
 		
 		 </p:panel>
 		 
