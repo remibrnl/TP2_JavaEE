@@ -113,7 +113,7 @@ public class CommentaireDAO implements DAO<Commentaire> {
 			
 			Transaction transac = sess.beginTransaction();
 
-			Query query = sess.createQuery("UPDATE Commentaire set nbLikes = :nblike  WHERE idCommentaire = :idcom ");
+			Query query = sess.createQuery("UPDATE Commentaire SET nbLikes = :nblike WHERE idCommentaire = :idcom ");
 			
 			query.setParameter("nblike", obj.getNbLikes());
 			query.setParameter("idcom", obj.getIdCommentaire());
