@@ -12,6 +12,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.primefaces.PrimeFaces;
+
 import dao.CommentaireDAO;
 import dao.MembreDAO;
 import entities.Commentaire;
@@ -72,7 +74,7 @@ public class MembreBean implements Serializable {
     	try {
 			listMembres = membreDAO.findAll();
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e.getMessage(), null));
+			PrimeFaces.current().executeScript("window.alert('"+e.getMessage()+"');");
 			e.printStackTrace();
 		}
         

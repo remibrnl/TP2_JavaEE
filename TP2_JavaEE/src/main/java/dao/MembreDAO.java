@@ -44,7 +44,7 @@ public class MembreDAO implements DAO<Membre> {
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 			
-			membresList = sess.createQuery("FROM Membre ORDER BY Membre.nom", Membre.class).getResultList();
+			membresList = sess.createQuery("FROM Membre ORDER BY idMembre", Membre.class).getResultList();
 			
 		} catch (Exception e) {
 			throw e;

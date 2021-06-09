@@ -3,7 +3,10 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.sun.istack.Nullable;
 
@@ -37,7 +40,8 @@ public class CommentaireDAO implements DAO<Commentaire> {
 	}
 
 	@Override
-	@Nullable public List<Commentaire> findAll() throws Exception {
+	@Nullable 
+	public List<Commentaire> findAll() throws Exception {
 		Session sess = null;
 		List<Commentaire> commentairesList = new ArrayList<Commentaire>();
 		
@@ -84,11 +88,17 @@ public class CommentaireDAO implements DAO<Commentaire> {
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
 
-			sess.persist(obj);
-		} catch (Exception e) {
+			sess.save(obj);
+		} 
+		
+		catch (Exception e) 
+		{
 			throw e;
-		} finally {
-			if (sess != null && sess.isOpen()) {
+		}
+		finally 
+		{
+			if (sess != null && sess.isOpen()) 
+			{
 				sess.close();
 			}
 		}
@@ -100,16 +110,32 @@ public class CommentaireDAO implements DAO<Commentaire> {
 
 		try {
 			sess = HibernateUtil.getSessionFactory().openSession();
+			
+			Transaction transac = sess.beginTransaction();
 
-			sess.update(obj);
-		} catch (Exception e) {
+			Query query = sess.createQuery("UPDATE Commentaire set nbLikes = :nblike  WHERE idCommentaire = :idcom ");
+			
+			query.setParameter("nblike", obj.getNbLikes());
+			query.setParameter("idcom", obj.getIdCommentaire());
+			
+			
+			query.executeUpdate();
+			
+			transac.commit();
+		} 
+		catch (Exception e) 
+		{
 			throw e;
-		} finally {
+		} 
+		finally 
+		{
 			if (sess != null && sess.isOpen()) {
 				sess.close();
 			}
 		}
 	}
+	
+	
 
 	@Override
 	public void delete(Commentaire obj) throws Exception {

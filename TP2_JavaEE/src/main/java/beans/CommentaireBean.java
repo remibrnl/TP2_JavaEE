@@ -12,6 +12,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.primefaces.PrimeFaces;
+
 import dao.CommentaireDAO;
 import entities.Commentaire;
 
@@ -43,25 +45,31 @@ public class CommentaireBean implements Serializable {
     	commentaire.setNbLikes(0);
     	try {
 			commentaireDAO.create( commentaire );
-		} catch (Exception e) {
+		} 
+    	
+    	catch (Exception e) 
+    	{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e.getMessage(), null));
 			e.printStackTrace();
 		}
     	
-        FacesMessage message = new FacesMessage( "Le commentaire a bien été envoyé" );
-        FacesContext.getCurrentInstance().addMessage( null, message );
+    	//On affiche un message de confirmation et on refresh la page
+    	PrimeFaces.current().executeScript("window.alert('Le commentaire a bien été envoyé'); window.location.replace('livretdor.xhtml?i=2');");
+        
     }
     
     /*
      * Cette méthode ajoute un like a un commentaire
      */
-    public void upvote() {
+    public void upvote(Commentaire com) {
     	CommentaireDAO commentaireDAO = new CommentaireDAO();
-    	commentaire.setNbLikes(commentaire.getNbLikes()+1);
+    	com.setNbLikes(com.getNbLikes()+1);   
+    	
     	try {
-			commentaireDAO.update( commentaire );
+			commentaireDAO.update( com );
+			
 		} catch (Exception e1) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e1.getMessage(), null));
+			PrimeFaces.current().executeScript("window.alert('"+e1.getMessage()+"');");
 			e1.printStackTrace();
 		}
     	
