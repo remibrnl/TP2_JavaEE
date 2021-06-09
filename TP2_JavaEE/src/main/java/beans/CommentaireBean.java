@@ -58,7 +58,12 @@ public class CommentaireBean implements Serializable {
     public void upvote() {
     	CommentaireDAO commentaireDAO = new CommentaireDAO();
     	commentaire.setNbLikes(commentaire.getNbLikes()+1);
-    	commentaireDAO.update( commentaire );
+    	try {
+			commentaireDAO.update( commentaire );
+		} catch (Exception e1) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e1.getMessage(), null));
+			e1.printStackTrace();
+		}
     	
     	ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         try {
