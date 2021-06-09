@@ -29,11 +29,40 @@
 	 
 	    </p:tabMenu>
 	</div>
-</h:form>
 
+
+<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+  
+    <p:panel header="Page d'inscription" toggleable="true" closable="true" toggleSpeed="500"
+                closeSpeed="500" widgetVar="panel">
+
+        <p:ajax event="close" listener="#{panelView.onClose}" update="msgs"/>
+        <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs"/>
+
+        <p class="p-m-0">
+            Cette page est destinée à l'inscription. S'inscrire à notre association permet de bénéficier d'avantages exclusifs tels que des cours particuliers de QT avec plusieurs de
+            nos formateurs et bien plus encore.
+        </p>
+
+        <f:facet name="options">
+            <p:menu>
+                <p:submenu label="Settings">
+                    <p:menuitem value="Toggle" url="#" icon="pi pi-clone" onclick="PF('panel').toggle()"/>
+                    <p:menuitem value="Remove" url="#" icon="pi pi-times" onclick="PF('panel').close()"/>
+                </p:submenu>
+            </p:menu>
+        </f:facet>
+    </p:panel>
+    
+</h:form>
+    
+    
 <div  class="parent">
   <h:form id="registrationForm">
-    <p:panel header="Page d'inscription" >
+    
+    
+    
+    <p:panel header="Formulaire d'inscription" >
 	    <h:panelGrid columns="2">
 	     
 	      <h:outputLabel value="Prénom :"/>
